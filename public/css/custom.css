@@ -1,3 +1,10 @@
+html {
+  font-family: "Fira Sans", "Source Sans Pro", Helvetica, Arial, sans-serif;
+}
+
+.right { float: right; }
+.left { float: left; }
+
 .repo-block-item {
   color:#fff;
   background-color: #563d7c;
@@ -40,5 +47,8 @@
   display: inline;
 }
 
-.right { float: right; }
-.left { float: left; }
+#search {
+  width: 300px;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+}

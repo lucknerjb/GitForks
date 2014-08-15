@@ -10,12 +10,29 @@ class RepositoriesController extends Controller
 
   public function index($user, $repository) {
     // Store the search in the db
+    // @TODO: Move to model function
+    $search = Search::firstOrNew(array('user' => $user, 'repo' => $repository));
+    if (isset($search->id)) {
+      $search->search_count += 1;
+    } else {
+      $search->search_count = 1;
+    }
+    $search->save();
 
+    // Retrieve searches
+    // @TODO: Move to model function
+    $searches_count = Search::count();
+    if ($searches_count > 5 && $searches_count < 10) { $limit = 5; }
+    else if ($searches_count > 10 && $searches_count < 15) { $limit = 10; }
+    else if ($searches_count > 15 && $searches_count < 20) { $limit = 15; }
+    else if ($searches_count > 25) { $limit = 25; }
+    $top_searches = DB::table('searches')->orderBy('search_count', 'desc')->limit($limit)->get();
+
+    // Fetch repo
     $response = GitHub::getHttpClient()->get("repos/{$user}/{$repository}/forks?per_page=100&sort=stargazers&order=desc");
     $repos    = Github\HttpClient\Message\ResponseMediator::getContent($response);
 
     $data = array();
-
     foreach($repos as $repo) {
       $tmp = array(
         'id' => $repo['owner']['id'],
@@ -28,7 +45,8 @@ class RepositoriesController extends Controller
         'stars' => $repo['stargazers_count'],
         'watchers' => $repo['watchers'],
         'forks' => $repo['forks'],
-        'open_issues' => $repo['open_issues']
+        'open_issues' => $repo['open_issues'],
+        'last_push' => $repo['pushed_at']
       );
 
       // @TODO: In V2, show commit count in the past say 6-12 months and possible show as a graph on a per week basis
@@ -53,7 +71,8 @@ class RepositoriesController extends Controller
     // echo json_encode($data); die;
 
     $view = View::make('repositories.index')
-      ->with('data', $data);
+      ->with('data', $data)
+      ->with('top_searches', $top_searches);
 
     return $view;
   }

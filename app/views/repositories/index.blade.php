@@ -10,6 +10,8 @@
           <span class="right">
             <span class="glyphicon glyphicon-calendar"></span>
             {{ date('Y-m-d H:i:s', strtotime($repo['created'])) }}
+            &nbsp;&nbsp;
+            ( Last Push: {{ date('Y-m-d', strtotime($repo['last_push'])) }} )
           </span>
         </h3>
       </div>
