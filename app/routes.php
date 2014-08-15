@@ -11,7 +11,6 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+Route::get('/', array('uses' => 'PagesController@index'));
+
+Route::get('/r/{user}/{repo}', array('uses' => 'RepositoriesController@index'));

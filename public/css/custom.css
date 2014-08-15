@@ -1,0 +1,44 @@
+.repo-block-item {
+  color:#fff;
+  background-color: #563d7c;
+  background-color: #31708f;
+  width: 80px;
+  height: 100px;
+  padding: 10px;
+  text-align: center;
+  float: left;
+  margin-right: 5px;
+  list-style-type: none;
+  position: relative;
+}
+
+.repo-block-item .glyphicon {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 30px;
+}
+
+.repo-block-item .value {
+  display: block;
+  text-align: center;
+  word-wrap: break-word;
+  font-size: 24px;
+}
+
+.repo-block-item .text {
+  color: #000;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #ccc;
+  display:block;
+}
+
+.repo-owner-avatar {
+  max-height: 30px;
+  display: inline;
+}
+
+.right { float: right; }
+.left { float: left; }
