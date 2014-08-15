@@ -38,8 +38,8 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="https://github.com/lucknerjb/gitforks">About</a></li>
-            <li><a href="https://github.com/lucknerjb/gitforks">Contribute</a></li>
+            <li><a target="_blank" href="https://github.com/lucknerjb/gitforks">About</a></li>
+            <li><a target="_blank" href="https://github.com/lucknerjb/gitforks">Contribute</a></li>
           </ul>
           <form class="navbar-form navbar-right">
             <input type="text" class="form-control" placeholder="jquery/jquery" id="search">
