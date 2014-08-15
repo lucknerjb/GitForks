@@ -43,7 +43,7 @@
             </li>
           </ul>
         </div>
-        <div class="left" style="margin-left: 25px;">
+        <div class="left" style="margin-left: 25px; display: none;">
           <div class="well well-sm repo-owner-container">
           </div>
         </div>
