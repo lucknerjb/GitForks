@@ -22,6 +22,7 @@ class RepositoriesController extends Controller
     // Retrieve searches
     // @TODO: Move to model function
     $searches_count = Search::count();
+    $limit = 5;
     if ($searches_count > 5 && $searches_count < 10) { $limit = 5; }
     else if ($searches_count > 10 && $searches_count < 15) { $limit = 10; }
     else if ($searches_count > 15 && $searches_count < 20) { $limit = 15; }

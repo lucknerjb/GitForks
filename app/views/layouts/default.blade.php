@@ -55,7 +55,7 @@
             <li class="active"><a href="javascript:void(0);">Popular Searches</a></li>
           </ul>
           <ul class="nav nav-sidebar">
-            @if(sizeof($top_searches) > 0)
+            @if(isset($top_searches) && sizeof($top_searches) > 0)
               @foreach($top_searches as $item)
                 <li><a href="/r/{{ $item->user }}/{{ $item->repo }}">{{ $item->user }}/{{ $item->repo }} ({{ $item->search_count }})</a></li>
               @endforeach
